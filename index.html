@@ -56,15 +56,6 @@
       const initialRotation = `${Math.floor(Math.random() * 360)}deg`;
       img.style.setProperty('--base-rotation', initialRotation);
 
-      const dx = (Math.random() - 0.5) * 100;
-      const dy = (Math.random() - 0.5) * 100;
-      const rot = `${Math.random() * 20 - 10}deg`;
-
-      img.style.setProperty('--dx', dx.toFixed(2));
-      img.style.setProperty('--dy', dy.toFixed(2));
-      img.style.setProperty('--rot', rot);
-
-
       // Custom drift values per cell
       const dx = (Math.random() - 0.5) * 100;  // max 50px left/right
       const dy = (Math.random() - 0.5) * 100;  // max 50px up/down
