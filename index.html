@@ -34,7 +34,7 @@
       color: white;
       font-family: monospace;
       font-size: 16px;
-      background-color: white;
+      background-color: green;
       padding: 6px 10px;
       border-radius: 6px;
       z-index: 999;
@@ -45,7 +45,11 @@
   </style>
 </head>
 <body>
-  <script>
+  
+  <div id="countdown"></div>
+</body>
+
+<script>
     const NUM_IMAGES = 23;
     const IMAGES_PATH = "cells/";
     const IMAGE_NAMES = Array.from({ length: NUM_IMAGES }, (_, i) => `cell_${i + 1}.png`);
@@ -105,8 +109,5 @@
 
     updateCountdown();
 
-  </script>
-  
-  <div id="countdown"></div>
-</body>
+  </script>  
 </html>
