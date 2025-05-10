@@ -16,17 +16,18 @@
       pointer-events: none;
       opacity: 0.85;
       animation: drift 30s infinite alternate ease-in-out;
-      transform: rotate(var(--base-rotation));
     }
 
     @keyframes drift {
       0% {
-        transform: translate(0, 0) rotate(0deg);
+        transform: translate(0, 0) rotate(var(--base-rotation));
       }
       100% {
-        transform: translate(calc(var(--dx) * 1px), calc(var(--dy) * 1px)) rotate(var(--rot));
+        transform: translate(calc(var(--dx) * 1px), calc(var(--dy) * 1px)) rotate(calc(var(--base-rotation) + var(--rot)));
       }
     }
+
+    
   </style>
 </head>
 <body>
