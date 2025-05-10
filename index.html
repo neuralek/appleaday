@@ -13,7 +13,7 @@
     .cell {
       position: absolute;
       pointer-events: none;
-      opacity: 0.8;
+      opacity: 0.9;
     }
   </style>
 </head>
@@ -25,14 +25,14 @@
 
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
-    const numberOfCells = Math.floor((screenWidth * screenHeight) / 5000); // tweak density here
+    const numberOfCells = Math.floor((screenWidth * screenHeight) / 3000); // tweak density here
 
     for (let i = 0; i < numberOfCells; i++) {
       const img = document.createElement("img");
       img.src = IMAGES_PATH + IMAGE_NAMES[Math.floor(Math.random() * NUM_IMAGES)];
       img.className = "cell";
 
-      const size = Math.random() * 50 + 20; // random size between 20px and 70px
+      const size = Math.random() * 100 + 20; // random size between 20px and 70px
       img.style.width = `${size}px`;
       img.style.height = "auto";
       img.style.left = `${Math.random() * screenWidth}px`;
