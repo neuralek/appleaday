@@ -27,6 +27,20 @@
       }
     }
 
+    #countdown {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      color: white;
+      font-family: monospace;
+      font-size: 16px;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 6px 10px;
+      border-radius: 6px;
+      z-index: 999;
+    }
+
+
     
   </style>
 </head>
@@ -73,6 +87,25 @@
 
       document.body.appendChild(img);
     }
+
+    function updateCountdown() {
+      const today = new Date();
+      const target = new Date(today.getFullYear(), 9, 1); // October is month 9 (0-based index)
+  
+      // If it's already past October this year, target next year
+      if (today > target) {
+        target.setFullYear(target.getFullYear() + 1);
+      }
+
+      const diffTime = target - today;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+      document.getElementById('countdown').textContent = `🍎 ${diffDays} days until October 1st`;
+    }
+
+    updateCountdown();
+
   </script>
+  <div id="countdown"></div>
 </body>
 </html>
