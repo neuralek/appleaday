@@ -38,7 +38,7 @@
 
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
-    const numberOfCells = Math.floor((screenWidth * screenHeight) / 6000); // density control
+    const numberOfCells = Math.floor((screenWidth * screenHeight) / 4000); // density control
 
     for (let i = 0; i < numberOfCells; i++) {
       const img = document.createElement("img");
@@ -46,7 +46,7 @@
       img.className = "cell";
 
       if (img.src.includes('cell_1.png')) {
-        img.style.width = '300px'; // fixed large size for cell_5.png
+        img.style.width = '200px'; // fixed large size for cell_5.png
       } else {
         const size = Math.random() * 50 + 20;
         img.style.width = `${size}px`;
