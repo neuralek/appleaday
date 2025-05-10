@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>apple a day</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      overflow: hidden;
+    }
+    .cell {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const NUM_IMAGES = 23;
+    const IMAGES_PATH = "cells/";
+    const IMAGE_NAMES = Array.from({ length: NUM_IMAGES }, (_, i) => `cell_${i + 1}.png`);
 
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    const numberOfCells = Math.floor((screenWidth * screenHeight) / 5000); // tweak density here
+
+    for (let i = 0; i < numberOfCells; i++) {
+      const img = document.createElement("img");
+      img.src = IMAGES_PATH + IMAGE_NAMES[Math.floor(Math.random() * NUM_IMAGES)];
+      img.className = "cell";
+
+      const size = Math.random() * 50 + 20; // random size between 20px and 70px
+      img.style.width = `${size}px`;
+      img.style.height = "auto";
+      img.style.left = `${Math.random() * screenWidth}px`;
+      img.style.top = `${Math.random() * screenHeight}px`;
+      img.style.transform = `rotate(${Math.random() * 360}deg)`;
+
+      document.body.appendChild(img);
+    }
+  </script>
+</body>
+</html>
