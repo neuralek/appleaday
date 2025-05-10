@@ -2,18 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>apple a day</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Microscope Cell Simulation</title>
   <style>
     body {
       margin: 0;
       background-color: black;
       overflow: hidden;
     }
+
     .cell {
       position: absolute;
       pointer-events: none;
       opacity: 0.9;
+      animation: drift 30s infinite alternate ease-in-out;
+    }
+
+    @keyframes drift {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate(calc(var(--dx) * 1px), calc(var(--dy) * 1px)) rotate(var(--rot));
+      }
     }
   </style>
 </head>
@@ -21,23 +32,34 @@
   <script>
     const NUM_IMAGES = 23;
     const IMAGES_PATH = "cells/";
-    const IMAGE_NAMES = Array.from({ length: NUM_IMAGES }, (_, i) => `cell_${i + 1}.png`);
+    const IMAGE_NAMES = Array.from({ length: NUM_IMAGES }, (_, i) => `cell${i + 1}.png`);
 
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
-    const numberOfCells = Math.floor((screenWidth * screenHeight) / 3000); // tweak density here
+    const numberOfCells = Math.floor((screenWidth * screenHeight) / 5000); // density control
 
     for (let i = 0; i < numberOfCells; i++) {
       const img = document.createElement("img");
       img.src = IMAGES_PATH + IMAGE_NAMES[Math.floor(Math.random() * NUM_IMAGES)];
       img.className = "cell";
 
-      const size = Math.random() * 100 + 20; // random size between 20px and 70px
+      const size = Math.random() * 50 + 20; // between 20px and 70px width
       img.style.width = `${size}px`;
-      img.style.height = "auto";
-      img.style.left = `${Math.random() * screenWidth}px`;
-      img.style.top = `${Math.random() * screenHeight}px`;
-      img.style.transform = `rotate(${Math.random() * 360}deg)`;
+      img.style.height = "auto"; // preserve aspect ratio
+
+      const left = Math.random() * screenWidth;
+      const top = Math.random() * screenHeight;
+      img.style.left = `${left}px`;
+      img.style.top = `${top}px`;
+
+      // Custom drift values per cell
+      const dx = (Math.random() - 0.5) * 100;  // max 50px left/right
+      const dy = (Math.random() - 0.5) * 100;  // max 50px up/down
+      const rot = `${Math.random() * 20 - 10}deg`; // slight rotation back and forth
+
+      img.style.setProperty('--dx', dx.toFixed(2));
+      img.style.setProperty('--dy', dy.toFixed(2));
+      img.style.setProperty('--rot', rot);
 
       document.body.appendChild(img);
     }
