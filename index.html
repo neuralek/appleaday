@@ -45,9 +45,14 @@
       img.src = IMAGES_PATH + IMAGE_NAMES[Math.floor(Math.random() * NUM_IMAGES)];
       img.className = "cell";
 
-      const size = Math.random() * 50 + 20; // between 20px and 70px width
-      img.style.width = `${size}px`;
+      if (img.src.includes('cell_1.png')) {
+        img.style.width = '150px'; // fixed large size for cell_5.png
+      } else {
+        const size = Math.random() * 50 + 20;
+        img.style.width = `${size}px`;
+      }
       img.style.height = "auto"; // preserve aspect ratio
+
 
       const left = Math.random() * screenWidth;
       const top = Math.random() * screenHeight;
