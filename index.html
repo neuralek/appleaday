@@ -42,17 +42,17 @@
 
     #monthly-message {
       position: fixed;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black */
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.7); /* transparent black */
       color: white;
       font-family: 'Courier New';
-      font-size: 18px;
-      padding: 8px 12px;
-      border-radius: 4px;
+      font-size: 16px;
+      padding: 10px;
       opacity: 0.3;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.4s ease;
       pointer-events: none;
     }
 
@@ -90,7 +90,7 @@
 <body>
     <div id="controls">
       <a href="#" id="mute-toggle">lullaby</a>
-      <a href="#" id="about-toggle">@bout</a>
+      <a href="#" id="about-toggle">about</a>
     </div>
 
       <div id="about-content" style="
@@ -109,13 +109,12 @@
         display: none;
         z-index: 999;
       ">
-        <!-- README.md content will be loaded here -->
         <p>Loading...</p>
       </div>
   
   <audio id="bg-audio" autoplay loop muted>
-  <source src="audio/themev4.wav" type="audio/wav">
-</audio>
+      <source src="audio/themev4.wav" type="audio/wav">
+  </audio>
   
   <div id="countdown"></div>
   <div id="monthly-message"></div>
