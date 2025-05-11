@@ -39,12 +39,27 @@
       z-index: 999;
     }
 
+    #monthly-message {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      color: white;
+      font-family: 'Courier New';
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 8px 12px;
+      border-radius: 6px;
+      z-index: 998;
+    }
+
     
   </style>
 </head>
 <body>
   
   <div id="countdown"></div>
+  <div id="monthly-message"></div>
+  
 </body>
 
 <script>
@@ -68,24 +83,6 @@
         img.style.width = `${size}px`;
       }
       img.style.height = "auto"; // preserve aspect ratio
-
-     
-      // Calculate center clustering bias
-      //const today = new Date('2024-08-20');
-      //const target = new Date(today.getFullYear(), 9, 1); // October = month 9
-      //if (today > target) target.setFullYear(target.getFullYear() + 1);
-
-      //const diffTime = target - today;
-      //const TOTAL_DAYS = 150;
-      //const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      //const daysPassed = TOTAL_DAYS - diffDays;
-      //const centerBias = Math.max(0, Math.min(1, daysPassed / TOTAL_DAYS)); // clamp between 0 and 1
-
-      // Cluster toward center as time passes
-     // const left = screenWidth / 2 + (Math.random() - 0.5) * screenWidth * (1 - centerBias);
-     // const top = screenHeight / 2 + (Math.random() - 0.5) * screenHeight * (1 - centerBias);
-      //img.style.left = `${left}px`;
-      //img.style.top = `${top}px`;
 
 
       // Calculate clustering factor based on days until October
@@ -135,10 +132,24 @@
       const diffTime = target - today;
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-      document.getElementById('countdown').textContent = `${diffDays} days until the apple is ripe!`;
+      document.getElementById('countdown').textContent = `${diffDays}ish days until the apple is ripe !`;
     }
 
     updateCountdown();
+
+    const messages = {
+        4: "There’s a distinct change to the fruiting structures, the brighter red colouring of the ovaries at the base of the stigma. And the hypanthium – that develops into the ‘fleshy’ part of the apple, the part we actually eat, has just begun to swell.",
+        5: "The fertilised ovaries, in which the apple’s five seeds will develop, are now encased in the growing hypanthium, which will continue to grow and eventually ripen to become a deliciously edible apple fruit.",
+        6: "Fruitlets are developing into full-sized apples throughout the tree. As the heat of summer strengthens, our subject apple continues to grow and develop very nicely.",
+        7: "At this point, the weight of the growing fruit is just beginning to bend the pedicle, the short ‘stem’ that connects the apple fruit to the tree, downwards.",
+        8: "The apple continued to ripen in the autumn sunshine. A few heat- and/or insect-damaged leaves, that no longer have much use for photosynthesis and so drain on the tree’s resources, drop off."
+      };
+
+      const now = new Date();
+      const month = now.getMonth(); // 0 = Jan, 4 = May
+
+      const message = messages[month] || ""; // empty if outside May–Sept
+      document.getElementById("monthly-message").textContent = message;
 
   </script>  
 </html>
