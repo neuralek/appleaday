@@ -64,58 +64,71 @@
 </body>
 
 <script>
-    const NUM_IMAGES = 23;
-    const IMAGES_PATH = "cells/";
-    const IMAGE_NAMES = Array.from({ length: NUM_IMAGES }, (_, i) => `cell_${i + 1}.png`);
+    const NUM_IMAGES = 29;
+  const GREEN_PATH = "cells/";
+  const RED_PATH = "red_cells/";
+  const IMAGE_NAMES = Array.from({ length: NUM_IMAGES }, (_, i) => `cell_${i + 1}.png`);
 
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
-    const numberOfCells = Math.floor((screenWidth * screenHeight) / 6000);
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+  const numberOfCells = Math.floor((screenWidth * screenHeight) / 6000);
 
-    for (let i = 0; i < numberOfCells; i++) {
-      const img = document.createElement("img");
-      img.src = IMAGES_PATH + IMAGE_NAMES[Math.floor(Math.random() * NUM_IMAGES)];
-      img.className = "cell";
+  const today = new Date(); // ← uses real current date
+  const target = new Date(today.getFullYear(), 9, 1); // October 1
+  if (today > target) target.setFullYear(target.getFullYear() + 1);
+  const diffTime = target - today;
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const maxDays = 150;
+  const redRatio = Math.min(0.9, 1 - diffDays / maxDays);
+  const clusteringFactor = Math.min(1, 1 - diffDays / maxDays);
 
-      if (img.src.includes('cell_1.png')) {
-        img.style.width = '100px';
-      } else {
-        const size = Math.random() * 50 + 20;
-        img.style.width = `${size}px`;
-      }
-      img.style.height = "auto";
+  function createCell() {
+    const img = document.createElement("img");
 
-      const today = new Date('2024-07-10');
-      const target = new Date(today.getFullYear(), 9, 1);
-      if (today > target) target.setFullYear(target.getFullYear() + 1);
-      const diffTime = target - today;
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      const maxDays = 150;
-      const clusteringFactor = Math.min(1, 1 - diffDays / maxDays);
+    // Decide red or green
+    const isRed = Math.random() < redRatio;
+    const path = isRed ? RED_PATH : GREEN_PATH;
+    const imgName = IMAGE_NAMES[Math.floor(Math.random() * IMAGE_NAMES.length)];
+    img.src = path + imgName;
+    img.className = "cell";
 
-      const angle = Math.random() * 2 * Math.PI;
-      const radius = (1 - clusteringFactor) * (Math.random() * screenWidth / 2.5);
-      const centerX = screenWidth / 2;
-      const centerY = screenHeight / 2;
-      const left = centerX + radius * Math.cos(angle);
-      const top = centerY + radius * Math.sin(angle);
-      img.style.left = `${left}px`;
-      img.style.top = `${top}px`;
-
-
-      const initialRotation = `${Math.floor(Math.random() * 360)}deg`;
-      img.style.setProperty('--base-rotation', initialRotation);
-
-      const dx = (Math.random() - 0.5) * 100; 
-      const dy = (Math.random() - 0.5) * 100; 
-      const rot = `${Math.random() * 20 - 10}deg`;
-
-      img.style.setProperty('--dx', dx.toFixed(2));
-      img.style.setProperty('--dy', dy.toFixed(2));
-      img.style.setProperty('--rot', rot);
-
-      document.body.appendChild(img);
+    // Special size for cell_1.png
+    if (imgName === 'cell_1.png') {
+      img.style.width = '100px';
+    } else {
+      const size = Math.random() * 50 + 20;
+      img.style.width = `${size}px`;
     }
+    img.style.height = "auto";
+
+    // Clustering logic
+    const angle = Math.random() * 2 * Math.PI;
+    const radius = (1 - clusteringFactor) * (Math.random() * screenWidth / 2.5);
+    const centerX = screenWidth / 2;
+    const centerY = screenHeight / 2;
+    const left = centerX + radius * Math.cos(angle);
+    const top = centerY + radius * Math.sin(angle);
+    img.style.left = `${left}px`;
+    img.style.top = `${top}px`;
+
+    const initialRotation = `${Math.floor(Math.random() * 360)}deg`;
+    img.style.setProperty('--base-rotation', initialRotation);
+
+    const dx = (Math.random() - 0.5) * 100;
+    const dy = (Math.random() - 0.5) * 100;
+    const rot = `${Math.random() * 20 - 10}deg`;
+
+    img.style.setProperty('--dx', dx.toFixed(2));
+    img.style.setProperty('--dy', dy.toFixed(2));
+    img.style.setProperty('--rot', rot);
+
+    document.body.appendChild(img);
+  }
+
+  // Create all cells
+  for (let i = 0; i < numberOfCells; i++) {
+    createCell();
+  }
 
     function updateCountdown() {
       const today = new Date();
