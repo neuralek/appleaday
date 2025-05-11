@@ -62,13 +62,6 @@
       img.src = IMAGES_PATH + IMAGE_NAMES[Math.floor(Math.random() * NUM_IMAGES)];
       img.className = "cell";
 
-       // Use the number of days until October to determine the color shift
-      const TOTAL_DAYS = 150; // The total number of days from now until October 1st
-      const redShift = 1 - diffDays / TOTAL_DAYS; // 0 to 1 (start at 0 and shift to 1 as the days go by)
-
-      // Apply the color shift using the CSS filter property
-      img.style.filter = `sepia(${redShift * 100}%) saturate(${1 + redShift * 3}) hue-rotate(${redShift * 60}deg)`;
-
       if (img.src.includes('cell_1.png')) {
         img.style.width = '100px';
       } else {
