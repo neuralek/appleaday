@@ -127,13 +127,13 @@
     text-decoration: underline;
   }
 }
-
     
   </style>
 </head>
+  
 <body>
+  <div id="countdown"></div>
   <div id="mobile-controls">
-    <div id="countdown"></div>
     <div id="controls">
       <a href="#" id="mute-toggle">a lullaby</a>
       <a href="#" id="about-toggle">about</a>
@@ -164,6 +164,8 @@
   </audio>
 
   <div id="monthly-message"></div>
+
+  <!-- NO PEEKING! : 3 The final animation will be added as the clock strikes October. Patience. -->
   
 </body>
 
@@ -178,8 +180,8 @@
     const screenHeight = window.innerHeight;
     const numberOfCells = Math.floor((screenWidth * screenHeight) / 6000);
 
-    const today = new Date(); // ← uses real current date
-    const target = new Date(today.getFullYear(), 9, 1); // October 1
+    const today = new Date();
+    const target = new Date(today.getFullYear(), 9, 1);
     if (today > target) target.setFullYear(target.getFullYear() + 1);
     const diffTime = target - today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -251,6 +253,7 @@
 
     updateCountdown();
 
+    //developmental-facts 
     const messages = {
         4: "There’s a distinct change to the fruiting structures, the brighter red colouring of the ovaries at the base of the stigma. And the hypanthium – that develops into the ‘fleshy’ part of the apple, the part we actually eat - has just begun to swell.",
         5: "The fertilised ovaries, in which the apple’s five seeds will develop, are now encased in the growing hypanthium, which will continue to grow and eventually ripen to become a deliciously edible apple fruit.",
@@ -316,14 +319,14 @@
     }
 
     function scheduleRandomPlayback() {
-      const nextDelay = Math.random() * (7 - 4) * 60 * 1000 + 4 * 60 * 1000; // 4-7 mins
+      const nextDelay = Math.random() * (7 - 4) * 60 * 1000 + 4 * 60 * 1000;
       setTimeout(() => {
         playRandomSound();
-        scheduleRandomPlayback(); // schedule next
+        scheduleRandomPlayback();
       }, nextDelay);
     }
 
-    scheduleRandomPlayback(); // start the loop
+    scheduleRandomPlayback();
   
 
     //menu
@@ -343,7 +346,7 @@
           fetch('README.md?nocache=' + Date.now())
             .then((response) => response.text())
             .then((data) => {
-              // Convert newlines to <br> for display
+        
               const textAsHtml = data.replace(/\n/g, "<br>");
               aboutContent.innerHTML = `<div>${textAsHtml}</div>`;
               isContentLoaded = true;
