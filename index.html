@@ -93,16 +93,16 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    pointer-events: none; /* Allows background interaction if needed */
+    pointer-events: none; 
   }
 
   #mobile-controls > * {
     margin: 8px 0;
-    pointer-events: auto; /* Re-enable interaction on the buttons */
+    pointer-events: auto;
   }
 
   #countdown {
-    margin-bottom: 10px; /* space between countdown and options */
+    margin-bottom: 10px;
     color: white;
     font-family: 'Courier New';
     font-size: 16px;
@@ -135,7 +135,7 @@
   <div id="countdown"></div>
   <div id="mobile-controls">
     <div id="controls">
-      <a href="#" id="mute-toggle">a lullaby</a>
+      <a href="#" id="mute-toggle" >a lullaby</a>
       <a href="#" id="about-toggle">about</a>
     </div>
   </div>
@@ -360,20 +360,31 @@
       }
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const muteToggle = document.getElementById('mute-toggle');
+  //toggle-mute 
+  document.addEventListener('DOMContentLoaded', () => {
+  const muteToggle = document.getElementById('mute-toggle');
+  const audio = document.getElementById('bg-audio');
+  
+  audio.muted = true;
+  muteToggle.style.opacity = '0.5';
 
+  audio.play().catch(() => {
+
+    console.log('Autoplay blocked — will need user interaction');
+  });
+
+  muteToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    if (audio.muted) {
+      audio.muted = false;
+      muteToggle.style.opacity = '1';
+    } else {
+      audio.muted = true;
       muteToggle.style.opacity = '0.5';
-
-      muteToggle.addEventListener('click', () => {
-
-        if (muteToggle.style.opacity === '0.5') {
-          muteToggle.style.opacity = '1';
-        } else {
-          muteToggle.style.opacity = '0.5';
-        }
-      });
-    });
+    }
+  });
+});
 
 
   </script>  
