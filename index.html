@@ -71,6 +71,7 @@
       }
       img.style.height = "auto"; // preserve aspect ratio
 
+      <!--
       // Calculate center clustering bias
       const today = new Date('2024-08-20');
       const target = new Date(today.getFullYear(), 9, 1); // October = month 9
@@ -85,6 +86,27 @@
       // Cluster toward center as time passes
       const left = screenWidth / 2 + (Math.random() - 0.5) * screenWidth * (1 - centerBias);
       const top = screenHeight / 2 + (Math.random() - 0.5) * screenHeight * (1 - centerBias);
+      img.style.left = `${left}px`;
+      img.style.top = `${top}px`;
+
+      -->
+
+      // Calculate clustering factor based on days until October
+      const today = new Date('2024-08-20');
+      const target = new Date(today.getFullYear(), 9, 1); // October = 9 (0-indexed)
+      if (today > target) target.setFullYear(target.getFullYear() + 1);
+      const diffTime = target - today;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      const maxDays = 150; // how many days out you want to simulate total clustering over
+      const clusteringFactor = Math.min(1, 1 - diffDays / maxDays); // 0 (spread out) to 1 (fully clustered)
+
+      // Calculate circular position around center
+      const angle = Math.random() * 2 * Math.PI;
+      const radius = (1 - clusteringFactor) * (Math.random() * screenWidth / 2.5); // tighter radius over time
+      const centerX = screenWidth / 2;
+      const centerY = screenHeight / 2;
+      const left = centerX + radius * Math.cos(angle);
+      const top = centerY + radius * Math.sin(angle);
       img.style.left = `${left}px`;
       img.style.top = `${top}px`;
 
