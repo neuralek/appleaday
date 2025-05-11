@@ -229,6 +229,7 @@
   
       if (isVisible) {
     aboutContent.style.display = "none";
+    aboutToggle.style.opacity = 1;
       } else {
         if (!isContentLoaded) {
           fetch("README.md")
@@ -244,6 +245,7 @@
             });
         }
         aboutContent.style.display = "block";
+        aboutToggle.style.opacity = 0.3;
       }
     });
 
