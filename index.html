@@ -71,25 +71,24 @@
       }
       img.style.height = "auto"; // preserve aspect ratio
 
-      <!--
+     
       // Calculate center clustering bias
-      const today = new Date('2024-08-20');
-      const target = new Date(today.getFullYear(), 9, 1); // October = month 9
-      if (today > target) target.setFullYear(target.getFullYear() + 1);
+      //const today = new Date('2024-08-20');
+      //const target = new Date(today.getFullYear(), 9, 1); // October = month 9
+      //if (today > target) target.setFullYear(target.getFullYear() + 1);
 
-      const diffTime = target - today;
-      const TOTAL_DAYS = 150;
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      const daysPassed = TOTAL_DAYS - diffDays;
-      const centerBias = Math.max(0, Math.min(1, daysPassed / TOTAL_DAYS)); // clamp between 0 and 1
+      //const diffTime = target - today;
+      //const TOTAL_DAYS = 150;
+      //const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      //const daysPassed = TOTAL_DAYS - diffDays;
+      //const centerBias = Math.max(0, Math.min(1, daysPassed / TOTAL_DAYS)); // clamp between 0 and 1
 
       // Cluster toward center as time passes
-      const left = screenWidth / 2 + (Math.random() - 0.5) * screenWidth * (1 - centerBias);
-      const top = screenHeight / 2 + (Math.random() - 0.5) * screenHeight * (1 - centerBias);
-      img.style.left = `${left}px`;
-      img.style.top = `${top}px`;
+     // const left = screenWidth / 2 + (Math.random() - 0.5) * screenWidth * (1 - centerBias);
+     // const top = screenHeight / 2 + (Math.random() - 0.5) * screenHeight * (1 - centerBias);
+      //img.style.left = `${left}px`;
+      //img.style.top = `${top}px`;
 
-      -->
 
       // Calculate clustering factor based on days until October
       const today = new Date('2024-08-20');
