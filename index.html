@@ -171,5 +171,23 @@
       //const message = messages[month] || "";
       //document.getElementById("monthly-message").textContent = message;
 
+      const audio = document.getElementById("bg-audio");
+      const toggleLink = document.getElementById("mute-toggle");
+
+      // Ensure audio starts muted if autoplay is needed
+      audio.volume = 0;
+      audio.play();
+
+      toggleLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (audio.volume === 0) {
+          audio.volume = 1;
+          toggleLink.style.opacity = 1;
+        } else {
+          audio.volume = 0;
+          toggleLink.style.opacity = 0.3;
+        }
+      });
+
   </script>  
 </html>
