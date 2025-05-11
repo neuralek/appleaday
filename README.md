@@ -2,7 +2,7 @@ Hi!
 I wanted to send you an apple. But, here, apples don't ripen till October... : (
 
 I have my eyes on a specific fruit, on this old apple tree in our backyard. The tree's been around since I was a kid, and its fruits were always the sweetest!
-Yet, we have to wait for it to ripen... 
+Yet, we have to wait for it to grow... 
 
 
 You can watch the daily progress of the little applet, though.
