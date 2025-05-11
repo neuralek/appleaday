@@ -175,19 +175,26 @@
 
       // Ensure audio starts muted if autoplay is needed
       audio.volume = 0;
-      audio.play();
 
       toggleLink.addEventListener("click", function (e) {
-      e.preventDefault();
-      if (audio.volume === 0) {
-        audio.muted = false;
-        audio.volume = 1;
-        toggleLink.style.opacity = 1;
-      } else {
-        audio.volume = 0;
-        audio.muted = true;
-        toggleLink.style.opacity = 0.3;
-      }
+        e.preventDefault();
+
+        // Only attempt to play when the user clicks
+        if (audio.paused) {
+          audio.play().catch(err => {
+            console.error("Playback failed:", err);
+          });
+        }
+
+        if (audio.volume === 0) {
+          audio.muted = false;
+          audio.volume = 1;
+          toggleLink.style.opacity = 1;
+        } else {
+          audio.volume = 0;
+          audio.muted = true;
+          toggleLink.style.opacity = 0.3;
+        }
       });
 
   </script>  
