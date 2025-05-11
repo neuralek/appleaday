@@ -57,6 +57,10 @@
   </style>
 </head>
 <body>
+  <audio id="bg-audio" autoplay loop>
+  <source src="assets/audio/.wav" type="audio/wav">
+  Your browser does not support the audio element.
+</audio>
   
   <div id="countdown"></div>
   <div id="monthly-message"></div>
@@ -65,25 +69,25 @@
 
 <script>
     const NUM_IMAGES = 23;
-  const GREEN_PATH = "cells/";
-  const RED_PATH = "red_cells/";
-  const IMAGE_NAMES = Array.from({ length: NUM_IMAGES }, (_, i) => `cell_${i + 1}.png`);
+    const GREEN_PATH = "cells/";
+    const RED_PATH = "red_cells/";
+    const IMAGE_NAMES = Array.from({ length: NUM_IMAGES }, (_, i) => `cell_${i + 1}.png`);
 
-  const screenWidth = window.innerWidth;
-  const screenHeight = window.innerHeight;
-  const numberOfCells = Math.floor((screenWidth * screenHeight) / 6000);
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    const numberOfCells = Math.floor((screenWidth * screenHeight) / 6000);
 
-  const today = new Date('2024-09-10'); // ← uses real current date
-  const target = new Date(today.getFullYear(), 9, 1); // October 1
-  if (today > target) target.setFullYear(target.getFullYear() + 1);
-  const diffTime = target - today;
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  const maxDays = 150;
-  const redRatio = Math.min(0.9, 1 - diffDays / maxDays);
-  const clusteringFactor = Math.min(1, 1 - diffDays / maxDays);
+    const today = new Date(); // ← uses real current date
+    const target = new Date(today.getFullYear(), 9, 1); // October 1
+    if (today > target) target.setFullYear(target.getFullYear() + 1);
+    const diffTime = target - today;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    const maxDays = 150;
+    const redRatio = Math.min(0.9, 1 - diffDays / maxDays);
+    const clusteringFactor = Math.min(1, 1 - diffDays / maxDays);
 
-  function createCell() {
-    const img = document.createElement("img");
+    function createCell() {
+      const img = document.createElement("img");
 
     // Decide red or green
     const isRed = Math.random() < redRatio;
@@ -131,7 +135,7 @@
   }
 
     function updateCountdown() {
-      const today = new Date('2024-09-10');
+      const today = new Date();
       const target = new Date(today.getFullYear(), 9, 1);
 
       if (today > target) {
@@ -147,11 +151,11 @@
     updateCountdown();
 
     const messages = {
-        3: "There’s a distinct change to the fruiting structures, the brighter red colouring of the ovaries at the base of the stigma. And the hypanthium – that develops into the ‘fleshy’ part of the apple, the part we actually eat - has just begun to swell.",
+        4: "There’s a distinct change to the fruiting structures, the brighter red colouring of the ovaries at the base of the stigma. And the hypanthium – that develops into the ‘fleshy’ part of the apple, the part we actually eat - has just begun to swell.",
         5: "The fertilised ovaries, in which the apple’s five seeds will develop, are now encased in the growing hypanthium, which will continue to grow and eventually ripen to become a deliciously edible apple fruit.",
-        8: "Fruitlets are developing into full-sized apples throughout the tree. As the heat of summer strengthens, our subject apple continues to grow and develop very nicely.",
+        6: "Fruitlets are developing into full-sized apples throughout the tree. As the heat of summer strengthens, our subject apple continues to grow and develop very nicely.",
         7: "At this point, the weight of the growing fruit is just beginning to bend the pedicle, the short ‘stem’ that connects the apple fruit to the tree, downwards.",
-        4: "The apple continued to ripen in the autumn sunshine. A few heat- and/or insect-damaged leaves, that no longer have much use for photosynthesis and so drain on the tree’s resources, drop off."
+        8: "The apple continued to ripen in the autumn sunshine. A few heat- and/or insect-damaged leaves, that no longer have much use for photosynthesis and so drain on the tree’s resources, drop off."
       };
 
       const now = new Date();
