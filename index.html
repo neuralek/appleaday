@@ -138,7 +138,7 @@
     updateCountdown();
 
     const messages = {
-        4: "There’s a distinct change to the fruiting structures, the brighter red colouring of the ovaries at the base of the stigma. And the hypanthium – that develops into the ‘fleshy’ part of the apple, the part we actually eat, has just begun to swell.",
+        4: "There’s a distinct change to the fruiting structures, the brighter red colouring of the ovaries at the base of the stigma. And the hypanthium – that develops into the ‘fleshy’ part of the apple, the part we actually eat - has just begun to swell.",
         5: "The fertilised ovaries, in which the apple’s five seeds will develop, are now encased in the growing hypanthium, which will continue to grow and eventually ripen to become a deliciously edible apple fruit.",
         6: "Fruitlets are developing into full-sized apples throughout the tree. As the heat of summer strengthens, our subject apple continues to grow and develop very nicely.",
         7: "At this point, the weight of the growing fruit is just beginning to bend the pedicle, the short ‘stem’ that connects the apple fruit to the tree, downwards.",
@@ -146,9 +146,14 @@
       };
 
       const now = new Date();
-      const month = now.getMonth(); // 0 = Jan, 4 = May
+      const month = now.getMonth(); 
 
-      const message = messages[month] || ""; // empty if outside May–Sept
+       const message = messages[month];
+      if (message && day <= 14) {
+        document.getElementById("monthly-message").textContent = message;
+      }
+
+      const message = messages[month] || "";
       document.getElementById("monthly-message").textContent = message;
 
   </script>  
