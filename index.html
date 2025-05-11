@@ -11,10 +11,6 @@
       overflow: hidden;
     }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
     .cell {
       position: absolute;
       pointer-events: none;
@@ -47,20 +43,22 @@
     #monthly-message {
       position: fixed;
       bottom: 10px;
-      left: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black */
       color: white;
       font-family: 'Courier New';
-      font-size: 14px;
-      background-color: rgba(0, 0, 0, 0.85);
+      font-size: 18px;
       padding: 8px 12px;
-      border-radius: 6px;
-      opacity: 0;
+      border-radius: 4px;
+      opacity: 0.3;
       transition: opacity 0.3s ease;
-      pointer-events: auto;
+      pointer-events: none;
     }
 
     #monthly-message:hover {
       opacity: 1;
+      pointer-events: auto;
     }
 
     #controls {
@@ -80,6 +78,10 @@
       text-decoration: none;
       opacity: 1;
       transition: opacity 0.3s ease;
+    }
+
+    #controls a:hover {
+      text-decoration: underline;
     }
 
     
