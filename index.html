@@ -58,6 +58,27 @@
 </head>
 <body>
   <a href="#" id="mute-toggle" style="position: fixed; top: 10px; left: 10px; color: white; font-family: 'Courier New'; font-size: 18px; z-index: 1000;">sound</a>
+  <a href="#" id="about-toggle" style="position: fixed; top: 40px; left: 10px; color: white; font-family: 'Courier New'; font-size: 16px; z-index: 1000;">about</a>
+
+      <div id="about-content" style="
+        position: fixed;
+        top: 70px;
+        left: 10px;
+        right: 10px;
+        max-height: 70%;
+        overflow-y: auto;
+        background-color: rgba(0, 0, 0, 0.85);
+        color: white;
+        font-family: 'Courier New';
+        font-size: 14px;
+        padding: 15px;
+        border-radius: 8px;
+        display: none;
+        z-index: 999;
+      ">
+        <!-- README.md content will be loaded here -->
+        <p>Loading...</p>
+      </div>
   
   <audio id="bg-audio" autoplay loop muted>
   <source src="audio/themev4.wav" type="audio/wav">
@@ -197,6 +218,35 @@
           toggleLink.style.opacity = 0.3;
         }
       });
+
+    const aboutToggle = document.getElementById("about-toggle");
+    const aboutContent = document.getElementById("about-content");
+    let isContentLoaded = false;
+
+    aboutToggle.addEventListener("click", function (e) {
+      e.preventDefault();
+      const isVisible = aboutContent.style.display === "block";
+  
+      if (isVisible) {
+    aboutContent.style.display = "none";
+      } else {
+        if (!isContentLoaded) {
+          fetch("README.md")
+            .then((response) => response.text())
+            .then((data) => {
+              // Convert newlines to <br> for display
+              const textAsHtml = data.replace(/\n/g, "<br>");
+              aboutContent.innerHTML = `<div>${textAsHtml}</div>`;
+              isContentLoaded = true;
+            })
+            .catch(() => {
+              aboutContent.innerHTML = "<p>Failed to load README.md</p>";
+            });
+        }
+        aboutContent.style.display = "block";
+      }
+    });
+
 
   </script>  
 </html>
