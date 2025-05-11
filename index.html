@@ -58,9 +58,8 @@
 </head>
 <body>
   <a href="#" id="mute-toggle" style="position: fixed; top: 10px; left: 10px; color: white; font-family: 'Courier New'; font-size: 22px; z-index: 1000;">m</a>
-  <audio id="bg-audio" autoplay loop>
+  <audio id="bg-audio" autoplay loop muted>
   <source src="assets/audio/themev4.wav" type="audio/wav">
-  Your browser does not support the audio element.
 </audio>
   
   <div id="countdown"></div>
@@ -181,12 +180,14 @@
       toggleLink.addEventListener("click", function (e) {
       e.preventDefault();
       if (audio.volume === 0) {
-          audio.volume = 1;
-          toggleLink.style.opacity = 1;
-        } else {
-          audio.volume = 0;
-          toggleLink.style.opacity = 0.3;
-        }
+        audio.muted = false;
+        audio.volume = 1;
+        toggleLink.style.opacity = 1;
+      } else {
+        audio.volume = 0;
+        audio.muted = true;
+        toggleLink.style.opacity = 0.3;
+      }
       });
 
   </script>  
