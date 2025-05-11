@@ -73,7 +73,7 @@
   const screenHeight = window.innerHeight;
   const numberOfCells = Math.floor((screenWidth * screenHeight) / 6000);
 
-  const today = new Date(); // ← uses real current date
+  const today = new Date('2024-09-10'); // ← uses real current date
   const target = new Date(today.getFullYear(), 9, 1); // October 1
   if (today > target) target.setFullYear(target.getFullYear() + 1);
   const diffTime = target - today;
