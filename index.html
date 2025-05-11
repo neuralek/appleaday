@@ -360,6 +360,21 @@
       }
     });
 
+    document.addEventListener('DOMContentLoaded', () => {
+      const muteToggle = document.getElementById('mute-toggle');
+
+      muteToggle.style.opacity = '0.5';
+
+      muteToggle.addEventListener('click', () => {
+
+        if (muteToggle.style.opacity === '0.5') {
+          muteToggle.style.opacity = '1';
+        } else {
+          muteToggle.style.opacity = '0.5';
+        }
+      });
+    });
+
 
   </script>  
 </html>
