@@ -63,12 +63,33 @@
       opacity: 1;
     }
 
+    #controls {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 1000;
+    }
+
+    #controls a {
+      color: white;
+      font-family: 'Courier New';
+      font-size: 22px;
+      text-decoration: none;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+
     
   </style>
 </head>
 <body>
-  <a href="#" id="mute-toggle" style="position: fixed; top: 10px; left: 10px; color: white; font-family: 'Courier New'; font-size: 16px; text-decoration: none; z-index: 1000;">sound</a>
-  <a href="#" id="about-toggle" style="position: fixed; top: 40px; left: 10px; color: white; font-family: 'Courier New'; font-size: 16px; text-decoration: none; z-index: 1000;">about</a>
+    <div id="controls">
+      <a href="#" id="mute-toggle">lullaby</a>
+      <a href="#" id="about-toggle">@bout</a>
+    </div>
 
       <div id="about-content" style="
         position: fixed;
