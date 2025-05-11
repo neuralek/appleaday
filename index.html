@@ -360,32 +360,6 @@
       }
     });
 
-  //toggle-mute 
-  document.addEventListener('DOMContentLoaded', () => {
-  const muteToggle = document.getElementById('mute-toggle');
-  const audio = document.getElementById('bg-audio');
-  
-  audio.muted = true;
-  muteToggle.style.opacity = '0.5';
-
-  audio.play().catch(() => {
-
-    console.log('Autoplay blocked — will need user interaction');
-  });
-
-  muteToggle.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    if (audio.muted) {
-      audio.muted = false;
-      muteToggle.style.opacity = '1';
-    } else {
-      audio.muted = true;
-      muteToggle.style.opacity = '0.5';
-    }
-  });
-});
-
 
   </script>  
 </html>
