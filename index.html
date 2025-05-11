@@ -83,14 +83,35 @@
       text-decoration: underline;
     }
 
+    @media (max-width: 768px) {
+  #mobile-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 10px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    pointer-events: none; /* Allows background interaction if needed */
+  }
+
+  #mobile-controls > * {
+    margin: 8px 0;
+    pointer-events: auto; /* Re-enable interaction on the buttons */
+  }
+
     
   </style>
 </head>
 <body>
+  <div id="mobile-controls">
+    <div id="countdown"></div>
     <div id="controls">
       <a href="#" id="mute-toggle">lullaby</a>
       <a href="#" id="about-toggle">about</a>
     </div>
+  </div>
 
       <div id="about-content" style="
         position: fixed;
@@ -114,8 +135,7 @@
   <audio id="bg-audio" autoplay loop muted>
       <source src="audio/theme.mp3" type="audio/wav">
   </audio>
-  
-  <div id="countdown"></div>
+
   <div id="monthly-message"></div>
   
 </body>
