@@ -22,11 +22,13 @@ You can use it as a part of your patience-building practice..
 .. Or as a Rorschach test?
 
 
-But still, we will have to wait. And isn't that very slowness of acquiring that we all need today?
+But still, we will have to wait. And isn't that very slowness of acquiring that we all lack today?
+
 
 
 
 Well, till October, then!
 
+A
 
 ###
