@@ -1,40 +1,33 @@
-### Hi!
+Hi!
 
-I wanted to send you an apple! 
+I wanted to send you an apple.
 
 
 But, here, apples don't ripen till October... : (
 
 
 I do have my eyes on a specific fruit, on this old apple tree at the end of my street.
-The tree's been around since I was a kid and never left me hungry!
+The tree's been around since I was a kid and it was always the sweetest!
 
 
 Yet, we have to wait... 
 
 
-I came to my hometown to de-tech, bearing no tools: 
-not my sensors, not my boards, not my modules, not my instruments.. 
-Not even my mouse! <3  )~
+BUT, you can still watch the progress of the applet.
 
 
-So I can't do much to help entertain the passing of time.
+It couldn't really fit inside the screen, so I sliced it down to a cellular level;
+I took a tiny tissue sample under a microscope (no apples harmed in the process)
+and used the images to simulate a cellular progress bar. Of a sort.
 
 
-BUT, 
-I can update you on the progress of our little applet.
-
-
-I can't fit the whole thing inside the screen, so I brought it down to the cellular level;
-I took a tiny tissue sample under a microscope - no apples harmed in the process! -
-and simulated a cellular progress bar. Of a sort.
-
-
-You can visit your applet whenever you wish. : )
+You can visit the applet whenever you wish. You can leave it in the background and listen to it in anticipation. 
+You can use it as a patience-building practice. As a Rorschach test..?
 
 
 
-So, we'll see you in October, I hope!
+
+Well, until then!
 
 
 ###
