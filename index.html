@@ -83,22 +83,50 @@
       text-decoration: underline;
     }
 
-    @media (max-width: 768px) {
-      #mobile-controls {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: fixed;
-        top: 10px;
-        left: 0;
-        right: 0;
-        z-index: 997;
-    }
+@media (max-width: 768px) {
+  #mobile-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 10px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    pointer-events: none; /* Allows background interaction if needed */
   }
 
-    #mobile-controls > * {
+  #mobile-controls > * {
     margin: 8px 0;
-    }
+    pointer-events: auto; /* Re-enable interaction on the buttons */
+  }
+
+  #countdown {
+    margin-bottom: 10px; /* space between countdown and options */
+    color: white;
+    font-family: 'Courier New';
+    font-size: 16px;
+  }
+
+  #controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #controls a {
+    color: white;
+    font-family: 'Courier New';
+    font-size: 16px;
+    text-decoration: none;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  #controls a:hover {
+    text-decoration: underline;
+  }
+}
 
     
   </style>
@@ -107,7 +135,7 @@
   <div id="mobile-controls">
     <div id="countdown"></div>
     <div id="controls">
-      <a href="#" id="mute-toggle">lullaby</a>
+      <a href="#" id="mute-toggle">a lullaby</a>
       <a href="#" id="about-toggle">about</a>
     </div>
   </div>
