@@ -16,7 +16,6 @@ Snippets describing its progress float at the bottom of the screen.
 
 
 Oh, and I made a lullaby to be played to the applet. They do say plants grow best when you make an effort to entertain them.
-(With a 'phantom sample' that made its way into the mix... Or, was the applet trying to say something?)
 
 
 You can visit the applet whenever you want. 
